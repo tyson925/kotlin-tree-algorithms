@@ -10,17 +10,17 @@ data class BinTreeNode(var value: Int, var left: BinTreeNode?, var right: BinTre
 
 class BinTree {
 
-    fun search(root: BinTreeNode, searchValue: Int): BinTreeNode {
-        var mozgo: BinTreeNode? = root
+    fun search(root: BinTreeNode?, searchValue: Int): BinTreeNode? {
+        var moveNode: BinTreeNode? = root
 
-        while (mozgo != null && mozgo.value != searchValue) {
-            if (searchValue < mozgo.value) {
-                mozgo = mozgo.left
+        while (moveNode != null && moveNode.value != searchValue) {
+            if (searchValue < moveNode.value) {
+                moveNode = moveNode.right
             } else {
-                mozgo.right
+                moveNode = moveNode.left
             }
         }
-        return mozgo!!
+        return moveNode
     }
 
     fun printTree(root: BinTreeNode?): BinTreeNode? {
@@ -140,7 +140,17 @@ class BinTree {
 
             binTree.printTree(root)
 
+
+val level = 0
+            println("Number of elements at level $level: \t" + binTree.numberOfElementInLevel(root,level))
+
+            println("Number of elements: \t " + binTree.numberOfElements(root))
+
             println("number of leafs:\t" + binTree.numberOfLeafs(root))
+
+            println(binTree.search(root,62))
+
+
         }
     }
 }
