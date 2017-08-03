@@ -3,18 +3,18 @@ package org.szeged.verem;
 public class VeremDinamikus {
 
     //Belso osztaly
-    class Node{
-        public int ertek;
+    class Elem {
+        private int ertek;
 
-        public Node kovetkezo;
+        private Elem kovetkezo;
 
-        public Node(int ertek, Node kovetkezo){
+        public Elem(int ertek, Elem kovetkezo){
             this.ertek = ertek;
             this.kovetkezo = kovetkezo;
         }
     }
 
-    private Node head = null;
+    private Elem head = null;
 
     public VeremDinamikus(){
         empty();
@@ -29,7 +29,7 @@ public class VeremDinamikus {
     }
 
     public void push(int elem){
-        head = new Node(elem, head);
+        head = new Elem(elem, head);
     }
 
     public int pop(){
