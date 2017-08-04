@@ -4,13 +4,13 @@ public class VeremDinamikus {
 
     //Belso osztaly
     class Elem {
-        private int ertek;
+        private int value;
 
-        private Elem kovetkezo;
+        private Elem nextElem;
 
-        public Elem(int ertek, Elem kovetkezo){
-            this.ertek = ertek;
-            this.kovetkezo = kovetkezo;
+        public Elem(int value, Elem nextElem){
+            this.value = value;
+            this.nextElem = nextElem;
         }
     }
 
@@ -37,8 +37,8 @@ public class VeremDinamikus {
             return -1;
         } else {
 
-            head = head.kovetkezo;
-            return head.ertek;
+            head = head.nextElem;
+            return head.value;
         }
     }
 
@@ -46,7 +46,7 @@ public class VeremDinamikus {
         if (isEmpty()){
             return -1;
         } else {
-            return head.ertek;
+            return head.value;
         }
     }
 
