@@ -6,12 +6,12 @@ public class QueueDinamic {
     class Elem {
         private int value;
 
-        private Elem head;
+        private Elem nextElem;
         //private Elem tail;
 
-        public Elem(int value, Elem head) {
+        public Elem(int value, Elem nextElem) {
             this.value = value;
-            this.head = head;
+            this.nextElem = nextElem;
         }
 
 
@@ -40,26 +40,32 @@ public class QueueDinamic {
 
     //Elhelyez a sorban egy elemet
     public void in(int value) {
-        Elem ujElem = null;
+        Elem ujElem = new Elem(value, null);
         if (isEmpty()) {
-            ujElem = new Elem(value, head);
+            head = ujElem;
         } else {
-            ujElem = new Elem(value,tail);
+            tail.nextElem = ujElem;
         }
-        tail = ujElem.head;
+        tail = ujElem;
     }
 
     public int out() {
         if (isEmpty()) {
+            System.out.println("Ures a sor!");
             return -1;
         } else {
-            //TODO
-            return head.value;
+            int result = head.value;
+            head = head.nextElem;
+            if (head == null) {
+                tail = null;
+            }
+            return result;
         }
     }
 
     public int first() {
         if (isEmpty()) {
+            System.out.println("Ures a sor!");
             return -1;
         } else {
             return head.value;

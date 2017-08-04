@@ -45,7 +45,7 @@ public class QueueStatic {
 
     public int out(){
         if (isEmpty()){
-            System.out.println("A sor ures, nem lehet elemet kivenni belole!");
+            System.out.println("A list ures, nem lehet elemet kivenni belole!");
             return -1;
         } else {
             int resElem = elemek[head];
@@ -60,7 +60,7 @@ public class QueueStatic {
 
     public int first() {
         if (isEmpty()) {
-            System.out.println("A sor ures, nem lehet elemet kivenni belole!");
+            System.out.println("A list ures, nem lehet elemet kivenni belole!");
             return -1;
         } else {
             return elemek[head];
