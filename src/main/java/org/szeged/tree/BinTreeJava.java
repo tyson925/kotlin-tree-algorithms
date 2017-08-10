@@ -1,4 +1,6 @@
-package org.szeged.tree;
+package org.szeged.treeKotlin;
 
 public class BinTreeJava {
+
+
 }
