@@ -1,4 +1,4 @@
-package org.szeged.tree
+package org.szeged.treeKotlin
 
 /**
  * Created by istvan on 7/10/17.
