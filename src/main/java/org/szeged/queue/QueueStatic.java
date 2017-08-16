@@ -15,7 +15,11 @@ public class QueueStatic {
     private boolean isEmpty;
 
     public QueueStatic() {
-        elemek = new int[10];
+        new QueueStatic(10);
+    }
+
+    public QueueStatic(int size) {
+        elemek = new int[size];
         head = 0;
         tail = 0;
         isEmpty = true;
@@ -26,13 +30,13 @@ public class QueueStatic {
     }
 
     public boolean isFull() {
-        return ((head == tail) && isEmpty);
+        return ((head == tail) && !isEmpty);
     }
 
     //Elhelyez a sorban egy elemet
     public void in(int elem) {
         if (isFull()) {
-            System.out.println("Tele van, mar nem lehet pakolni az adott sorba!");
+            System.out.println("Tele van, mar nem lehet pakolni az adott sorba! A " + elem + " már nem került a sorba...");
         } else {
             isEmpty = false;
             elemek[tail] = elem;
@@ -65,5 +69,9 @@ public class QueueStatic {
         } else {
             return elemek[head];
         }
+    }
+
+    public int getSize(){
+        return this.elemek.length;
     }
 }

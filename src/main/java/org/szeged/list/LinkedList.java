@@ -28,6 +28,7 @@ public class LinkedList {
 
     private Node actualNode = null;
 
+    private int size;
     /*
     head <- null
     tail <- null
@@ -37,6 +38,7 @@ public class LinkedList {
         this.head = null;
         this.tail = null;
         this.actualNode = null;
+        size = 0;
     }
 
     //return Head==Tail==null
@@ -111,6 +113,7 @@ public class LinkedList {
     public void insertFirst(int value) {
         Node newNode = new Node(value, null, head);
         this.actualNode = newNode;
+        size++;
         if (isEmpty()) {
             this.head = newNode;
             this.tail = newNode;
@@ -133,6 +136,7 @@ public class LinkedList {
         Tail <- ujCsomopont
      */
     public void insertLast(int value) {
+        size++;
         if (isEmpty()) {
             insertFirst(value);
         } else {
@@ -158,6 +162,7 @@ public class LinkedList {
      */
     //Aktualis elem ele valo beszuras
     public void insertBefore(int value) {
+        size++;
         if (isEmpty() || isFirst()) {
             insertFirst(value);
         } else {
@@ -177,6 +182,7 @@ public class LinkedList {
     */
     //Aktualis elem utan valo beszuras
     public void insertAfter(int value) {
+        size++;
         if (isEmpty() || isLast()) {
             insertLast(value);
         } else {
@@ -197,6 +203,7 @@ public class LinkedList {
     //Az elso elem torlese
     public void removeFirst() {
         if (!isEmpty()) {
+            size--;
             if (isFirst()) {
                 this.actualNode = head.nextNode;
                 this.head = head.nextNode;
@@ -220,7 +227,9 @@ public class LinkedList {
      */
     //Az utolso elem torlese
     public void removeLast() {
+
         if (!isEmpty()) {
+            size--;
             if (this.tail == this.head) {
                 removeFirst();
             } else if (isLast()){
@@ -245,6 +254,7 @@ public class LinkedList {
     //actualis elem torlese
     public void removeActual() {
         if (!isEmpty()) {
+            size--;
             if (isFirst()){
                 removeFirst();
             } else if (isLast()){
@@ -258,5 +268,9 @@ public class LinkedList {
         } else {
             System.out.println("list is empty");
         }
+    }
+
+    public int getSize() {
+        return size;
     }
 }

@@ -6,45 +6,44 @@ package org.szeged.tree;
 public class BinTreeWordStat {
 
 
-public WordFreqNode serch(WordFreqNode root, String searchValue){
+    public WordFreqNode serch(WordFreqNode root, String searchValue) {
 
-    while (root != null && !root.getWord().equals(searchValue)) {
-        int diff = root.getWord().compareTo(searchValue);
+        while (root != null && !root.getWord().equals(searchValue)) {
+            int diff = root.getWord().compareTo(searchValue);
 
-        if (diff < 0) {
-            root = root.getLeftNode();
-        } else {
-            root = root.getRighNode();
+            if (diff < 0) {
+                root = root.getLeftNode();
+            } else {
+                root = root.getRighNode();
+            }
         }
+        return root;
     }
-return root;
-}
 
-public WordFreqNode printTree(WordFreqNode root){
+    public WordFreqNode printTree(WordFreqNode root) {
 
-     if (root == null) {
-         return root;
+        if (root == null) {
+            return root;
 
-    } else {
+        } else {
 
-         if (root.getRighNode() != null){
-             return printTree(root.getRighNode());
-         }
-         System.out.println(root);
-         if (root.getLeftNode() != null){
-             return printTree(root.getLeftNode());
-         }
+            if (root.getRighNode() != null) {
+                return printTree(root.getRighNode());
+            }
+            System.out.println(root);
+            if (root.getLeftNode() != null) {
+                return printTree(root.getLeftNode());
+            }
 
+        }
+        return root;
     }
-    return root;
-}
-
 
 
     public WordFreqNode insertNode(WordFreqNode root, String word) {
 
-         if (root == null) {
-           return new WordFreqNode(word, 1, null, null);
+        if (root == null) {
+            return new WordFreqNode(word, 1, null, null);
         } else {
             int diff = root.getWord().compareTo(word);
             if (diff < 0) {
@@ -54,7 +53,7 @@ public WordFreqNode printTree(WordFreqNode root){
                 root.setRighNode(insertNode(root.getRighNode(), word));
                 return root;
             } else {
-                root.setFreq(root.getFreq()+1);
+                root.setFreq(root.getFreq() + 1);
                 return root;
             }
         }

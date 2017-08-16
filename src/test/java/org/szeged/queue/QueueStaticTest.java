@@ -1,26 +1,28 @@
-package org.szeged.verem;
+package org.szeged.queue;
+
+import org.szeged.verem.VeremStatikus;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-public class VeremStatikusTest {
-
+/**
+ * Created by istvan on 8/16/17.
+ */
+public class QueueStaticTest {
     public static void main(String[] args) {
-        VeremStatikusTest test = new VeremStatikusTest();
-        //test.statikusVeremIndex();
-        test.testVeremPop();
+QueueStaticTest test = new QueueStaticTest();
+test.testQueueOut();
     }
 
     public void statikusVeremIndex(){
         long start = System.currentTimeMillis();
 
-        VeremStatikus verem = new VeremStatikus(10);
+        QueueStatic sor = new QueueStatic(10);
 
         for (int i = 0; i< 12; i++) {
-            verem.push(i);
+            sor.in(i);
         }
 
         long end = System.currentTimeMillis();
@@ -29,15 +31,19 @@ public class VeremStatikusTest {
         System.out.print("Execution time is " + formatter.format((end - start) / 1000d) + " seconds");
     }
 
-    public void testVeremPop(){
-        VeremStatikus verem = new VeremStatikus(10);
+    public void testQueueOut(){
+        QueueStatic sor = new QueueStatic(10);
 
         for (int i = 0; i< 12; i++) {
-            verem.push(i);
+            sor.in(i);
         }
 
-        System.out.println("A verem legfelső eleme: " + verem.top());
+        System.out.println("A sor legelső eleme: " + sor.first());
+        System.out.println("Kivesszük sor legelső elemét: " + sor.out());
 
-        assertEquals(9,verem.pop());
+        assertEquals(1,sor.out());
     }
+
+
+
 }

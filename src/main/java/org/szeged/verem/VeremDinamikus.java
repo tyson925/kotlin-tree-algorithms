@@ -14,14 +14,18 @@ public class VeremDinamikus {
         }
     }
 
+    private int size;
+
     private Elem head = null;
 
     public VeremDinamikus(){
         empty();
+        size = 0;
     }
 
     public void empty(){
         head = null;
+        size = 0;
     }
 
     public boolean isEmpty(){
@@ -30,15 +34,17 @@ public class VeremDinamikus {
 
     public void push(int elem){
         head = new Elem(elem, head);
+        size++;
     }
 
     public int pop(){
         if (isEmpty()){
             return -1;
         } else {
-
+            int value = head.value;
+size--;
             head = head.nextElem;
-            return head.value;
+            return value;
         }
     }
 
@@ -48,6 +54,10 @@ public class VeremDinamikus {
         } else {
             return head.value;
         }
+    }
+
+    public int getSize(){
+        return size;
     }
 
 }

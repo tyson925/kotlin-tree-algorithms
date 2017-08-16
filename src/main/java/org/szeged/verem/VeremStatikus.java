@@ -38,7 +38,7 @@ public class VeremStatikus {
             elemek[head] = elem;
             head++;
         } else {
-            System.out.println("Nem fer el tobb elem a veremben");
+            System.out.println("Nem fer el tobb elem a veremben. A " + elem + " nem sikerült a vermbe tenni.");
         }
     }
 
@@ -61,6 +61,10 @@ public class VeremStatikus {
         } else {
             return elemek[head -1];
         }
+    }
+
+    public int getSize(){
+        return this.elemek.length;
     }
 
 
