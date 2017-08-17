@@ -20,12 +20,13 @@ public class BinTreeJava {
 
     public BinTreeNode printTree(BinTreeNode root) {
         if (root == null) {
+            System.out.println("A fa ures.");
             return root;
         } else {
             if (root.getRightNode() != null) {
                 return printTree(root.getRightNode());
             }
-            System.out.println(root);
+            //System.out.println(root);
             if (root.getLeftNode() != null) {
                 return printTree(root.getLeftNode());
             }

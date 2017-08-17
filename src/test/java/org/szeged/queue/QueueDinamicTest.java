@@ -1,9 +1,8 @@
 package org.szeged.queue;
 
-import org.szeged.verem.VeremDinamikus;
-
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,9 +21,9 @@ public class QueueDinamicTest {
         long start = System.currentTimeMillis();
 
         QueueDinamic sor = new QueueDinamic();
-
-        for (int i = 0; i < 12000000; i++) {
-            sor.in(i);
+        Random random = new Random();
+        for (int i = 0; i < 1200000; i++) {
+            sor.in(random.nextInt(1200000));
         }
         long end = System.currentTimeMillis();
 
@@ -36,7 +35,7 @@ public class QueueDinamicTest {
     public void testSorOut(){
         QueueDinamic sor = new QueueDinamic();
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 1200000; i++) {
             sor.in(i);
         }
         System.out.println("A sor legfelső eleme: " + sor.first());

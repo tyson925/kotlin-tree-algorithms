@@ -77,4 +77,17 @@ public class QueueDinamic {
     public int getSize() {
         return size;
     }
+
+    public String toString(){
+        Elem elem = this.head;
+        StringBuilder res = new StringBuilder();
+        res.append("[");
+        while (elem.nextElem != null){
+            res.append(elem.value).append(", ");
+            elem = elem.nextElem;
+        }
+        res.deleteCharAt(res.length()-2);
+        res.append("]");
+        return res.toString();
+    }
 }
