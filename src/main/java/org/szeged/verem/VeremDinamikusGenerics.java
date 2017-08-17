@@ -6,26 +6,19 @@ public class VeremDinamikusGenerics<T>{
 
     //Belso osztaly
     class NodeGenerics<T extends Comparable<?>> {
-        private T value;
+        private Comparable<T> value;
 
         private NodeGenerics nextNode;
 
-        public NodeGenerics(T value, NodeGenerics nextNode){
+        public NodeGenerics(Comparable<T> value, NodeGenerics nextNode) {
             this.value = value;
             this.nextNode = nextNode;
         }
 
-        public T getValue() {
+        public Comparable<T> getValue() {
             return value;
         }
 
-        int compareTo(NodeGenerics node){
-            if (this.value > node.value){
-                return -1;
-            } else {
-                return 1;
-            }
-        }
     }
 
     private int size;
@@ -46,24 +39,24 @@ public class VeremDinamikusGenerics<T>{
         return (head == null);
     }
 
-    public void push(T value) {
+    public void push(Comparable<T> value) {
         head = new NodeGenerics(value, head);
         size++;
     }
 
-    public  T pop() {
+    public Comparable<T> pop() {
         if (isEmpty()) {
             System.out.println("A lista ures");
             return null;
         } else {
-            T value = head.getValue();
+            Comparable<T> value = head.getValue();
             size--;
             head = head.nextNode;
             return value;
         }
     }
 
-    public T top() {
+    public Comparable<T> top() {
         if (isEmpty()) {
             return null;
         } else {

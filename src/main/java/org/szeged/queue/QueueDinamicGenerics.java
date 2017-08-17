@@ -1,15 +1,14 @@
 package org.szeged.queue;
 
-public class QueueDinamic {
-
+public class QueueDinamicGenerics<T> {
     //Belso osztaly
-    class Node {
-        private int value;
+    class Node<T extends Comparable<T>> {
+        private Comparable<T> value;
 
         private Node nextNode;
         //private Elem tail;
 
-        public Node(int value, Node nextNode) {
+        public Node(Comparable<T> value, Node nextNode) {
             this.value = value;
             this.nextNode = nextNode;
         }
@@ -20,7 +19,7 @@ public class QueueDinamic {
     private Node tail = null;
 
 
-    public QueueDinamic() {
+    public QueueDinamicGenerics() {
         empty();
     }
 
@@ -39,23 +38,23 @@ public class QueueDinamic {
     //}
 
     //Elhelyez a sorban egy elemet
-    public void in(int value) {
-        Node ujNode = new Node(value, null);
+    public void in(Comparable<T> value) {
+        Node node = new Node(value, null);
         if (isEmpty()) {
-            head = ujNode;
+            head = node;
         } else {
-            tail.nextNode = ujNode;
+            tail.nextNode = node;
         }
         size++;
-        tail = ujNode;
+        tail = node;
     }
 
-    public int out() {
+    public Comparable<T> out() {
         if (isEmpty()) {
             System.out.println("Ures a sor!");
-            return -1;
+            return null;
         } else {
-            int result = head.value;
+            Comparable<T> result = head.value;
             head = head.nextNode;
             if (head == null) {
                 tail = null;
@@ -65,10 +64,10 @@ public class QueueDinamic {
         }
     }
 
-    public int first() {
+    public Comparable<T> first() {
         if (isEmpty()) {
             System.out.println("A sor üres. Nincs első eleme.");
-            return -1;
+            return null;
         } else {
             return head.value;
         }
