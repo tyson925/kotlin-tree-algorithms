@@ -9,26 +9,34 @@ public class VeremDinamikusTest {
 
     public static void main(String[] args) {
         VeremDinamikusTest test = new VeremDinamikusTest();
-        test.dinamikusVeremIndex();
+        test.dinamikusVeremIndex(12000L);
         //test.testVeremPop();
     }
 
-    public void dinamikusVeremIndex() {
+    public void averageRunningTime(){
+        for (int i = 0; i < 10; i++) {
+            dinamikusVeremIndex(120000L);
+        }
+    }
+
+    public Long dinamikusVeremIndex(Long limit) {
         long start = System.currentTimeMillis();
 
         VeremDinamikus verem = new VeremDinamikus();
 
-        for (int i = 0; i < 12000000; i++) {
+        for (int i = 0; i < limit; i++) {
             verem.push(i);
         }
         long end = System.currentTimeMillis();
 
+        Long runningTime = end - start;
         NumberFormat formatter = new DecimalFormat("#0.00000");
-        System.out.print("Execution time is " + formatter.format((end - start) / 1000d) + " seconds");
 
+        System.out.print("Execution time is " + formatter.format((runningTime) / 1000d) + " seconds");
+        return runningTime;
     }
 
-    public void testVeremPop(){
+    public void testVeremPop() {
         VeremDinamikus verem = new VeremDinamikus();
 
         for (int i = 0; i < 12; i++) {
@@ -36,7 +44,7 @@ public class VeremDinamikusTest {
         }
         System.out.println("A verem legfelső eleme: " + verem.top());
 
-        assertEquals(11,verem.pop());
+        assertEquals(11, verem.pop());
 
 
         for (int i = 0; i < 11; i++) {
