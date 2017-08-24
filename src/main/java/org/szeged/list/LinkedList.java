@@ -270,6 +270,34 @@ public class LinkedList {
         }
     }
 
+    public boolean contains(int searchValue){
+        stepFirst();
+        while(this.actualNode.nextNode != null){
+            if (this.actualNode.value == searchValue){
+                return true;
+            }
+            stepForeward();
+        }
+        if (this.actualNode.value == searchValue){
+            return true;
+        }
+        return false;
+    }
+
+    public String toString(){
+        stepFirst();
+        StringBuilder res = new StringBuilder();
+        res.append("[");
+        while(this.actualNode.nextNode != null){
+            res.append(this.actualNode.value).append(", ");
+            stepForeward();
+        }
+        res.append(actualNode.value);
+        res.deleteCharAt(res.length()-2);
+        res.append("]");
+        return res.toString();
+    }
+
     public int getSize() {
         return size;
     }

@@ -1,4 +1,4 @@
-package org.szeged;
+package org.szeged.util;
 
 import java.util.List;
 import java.util.OptionalDouble;
