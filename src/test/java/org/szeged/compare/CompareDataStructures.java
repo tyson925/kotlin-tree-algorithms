@@ -12,15 +12,16 @@ import java.util.Random;
 
 public class CompareDataStructures {
 
-    private static Long NUMBER_OF_ITEMS = 12000000L;
+    private static Long NUMBER_OF_ITEMS = 120L;
 
     public static void main(String[] args) {
         CompareDataStructures compare = new CompareDataStructures();
 
         //compare.measureCreateSet();
-        compare.measureAVGcreateLinkedList();
+        //compare.measureAVGcreateLinkedList();
         //compare.createLinkedList();
-        //compare.measureAVGcreateArrayList();
+        compare.measureAVGcreateArrayList();
+        //compare.measureAvgCreateSet();
     }
 
     public void measureAvgCreateSet() {
@@ -35,8 +36,8 @@ public class CompareDataStructures {
         long start = System.currentTimeMillis();
         HashSet<Integer> set = createHashSet(NUMBER_OF_ITEMS);
         long end = System.currentTimeMillis();
-        System.out.println("size of set: \t " + set.size());
-        //tree.printTree(root);
+        System.out.println("Number of elements at set: \t " + set.size());
+        System.out.println("Size of set: \t" + ObjectSizeCalculator.getObjectSize(set));
         NumberFormat formatter = new DecimalFormat("#0.00000");
         Long runningTime = end - start;
         System.out.println("to create hashset execution time is " + formatter.format((runningTime) / 1000d) + " seconds");
@@ -45,7 +46,7 @@ public class CompareDataStructures {
 
     private HashSet<Integer> createHashSet(long numberOfItems) {
         HashSet<Integer> set = new HashSet<Integer>();
-
+        System.out.println("Size of empty set: \t" + ObjectSizeCalculator.getObjectSize(set));
         Random random = new Random();
 
         for (int i = 0; i < numberOfItems; i++) {
@@ -68,7 +69,7 @@ public class CompareDataStructures {
         LinkedList<Integer> linkedList = createLinkedList(NUMBER_OF_ITEMS);
 
         long end = System.currentTimeMillis();
-        System.out.println("size of linkedList: \t " + linkedList.size());
+        System.out.println("Number of elements in linkedList: \t " + linkedList.size());
         System.out.println("Size of linkedList: \t" + ObjectSizeCalculator.getObjectSize(linkedList));
         Long runningTime = end - start;
         NumberFormat formatter = new DecimalFormat("#0.00000");
